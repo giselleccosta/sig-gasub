@@ -36,9 +36,25 @@
 <!-- CRIAÇÃO DA CAMADA GEOJSON A PARTIR DOS DADOS CARREGADOS -->
 			var geoJsonLayer = L.geoJson(data, { //adiciona arquivo como camada do Leaflet
 			  onEachFeature: function (feature, layer) { 
-				layer.bindPopup('name: '+feature.properties.f2+'</br>'+
-						'name: '+feature.properties.f2+'</br>'+
-						'name: '+feature.properties.f2+'</br>'
+				layer.bindPopup('Protocolo: '+feature.properties.protocolo+'</br>'+
+						'Categoria: '+feature.properties.categoria+'</br>'+
+						'Captação: '+feature.properties.captacao+'</br>'+
+						'Finalidade: '+feature.properties.finalidade+'</br>'+
+						'Município: '+feature.properties.municipio+'</br>'+
+						'Portaria: '+feature.properties.portaria+'</br>'+
+						'Data de Publicação: '+feature.properties.data_publicacao+'</br>'+
+						'Validade: '+feature.properties.validade+'</br>'+
+						'Vazão (m³/h): '+feature.properties.vazao+'</br>'+
+						'H/Dia: '+feature.properties.hdia+'</br>'+
+						'Profundidade do poço (m): '+feature.properties.profundidade+'</br>'+
+						'Tipo: '+feature.properties.tipo+'</br>'+
+						'NE (m): '+feature.properties.ne+'</br>'+
+						'ND (m): '+feature.properties.nd+'</br>'+
+						'Província Hidrogeológica: '+feature.properties.provincia+'</br>'+
+						'UPG: '+feature.properties.upg+'</br>'+
+						'Situação/Localização: '+feature.properties.situacao+'</br>'+
+						'Latitude: '+feature.properties.latitude+'</br>'+
+						'Longitude: '+feature.properties.longitude+'</br>'
 								); //para cada feição cria um popup com as informações
 			  }
 			});
