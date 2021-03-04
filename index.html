@@ -19,7 +19,7 @@
 	<div id="map" style="width: 100%; height: 100vh; border: 0px;"></div>
 	<script type="text/javascript">
 <!-- INSIRA ABAIXO O CAMINHO PARA SUA FONTE DE DADOS -->		
-		$.getJSON("https://github.com/giselleccosta/bd2/raw/master/bd2.geojson", function(data) {
+		$.getJSON("https://raw.githubusercontent.com/giselleccosta/bd2/master/bd2.geojson", function(data) {
 
 <!-- CRIA CAMADAS DE MAPA BASE -->
 		var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 25});
