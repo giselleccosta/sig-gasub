@@ -36,25 +36,25 @@
 <!-- CRIAÇÃO DA CAMADA GEOJSON A PARTIR DOS DADOS CARREGADOS -->
 			var geoJsonLayer = L.geoJson(data, { //adiciona arquivo como camada do Leaflet
 			  onEachFeature: function (feature, layer) { 
-				layer.bindPopup('Protocolo: '+feature.properties.protocolo+'</br>'+
-						'Categoria: '+feature.properties.categoria+'</br>'+
-						'Captação: '+feature.properties.captacao+'</br>'+
-						'Finalidade: '+feature.properties.finalidade+'</br>'+
-						'Município: '+feature.properties.municipio+'</br>'+
-						'Portaria: '+feature.properties.portaria+'</br>'+
-						'Data de Publicação: '+feature.properties.data_publicacao+'</br>'+
-						'Validade: '+feature.properties.validade+'</br>'+
-						'Vazão (m³/h): '+feature.properties.vazao+'</br>'+
-						'H/Dia: '+feature.properties.hdia+'</br>'+
-						'Profundidade do poço (m): '+feature.properties.profundidade+'</br>'+
-						'Tipo: '+feature.properties.tipo+'</br>'+
-						'NE (m): '+feature.properties.ne+'</br>'+
-						'ND (m): '+feature.properties.nd+'</br>'+
-						'Província Hidrogeológica: '+feature.properties.provincia+'</br>'+
-						'UPG: '+feature.properties.upg+'</br>'+
-						'Situação/Localização: '+feature.properties.situacao+'</br>'+
-						'Latitude: '+feature.properties.latitude+'</br>'+
-						'Longitude: '+feature.properties.longitude+'</br>'
+				layer.bindPopup('<strong>Protocolo: </strong>'+feature.properties.protocolo+'</br>'+
+						'<strong>Categoria: </strong>'+feature.properties.categoria+'</br>'+
+						'<strong>Captação: </strong>'+feature.properties.captacao+'</br>'+
+						'<strong>Finalidade: </strong>'+feature.properties.finalidade+'</br>'+
+						'<strong>Município: </strong>'+feature.properties.municipio+'</br>'+
+						'<strong>Portaria: </strong>'+feature.properties.portaria+'</br>'+
+						'<strong>Data de Publicação: '+feature.properties.data_publicacao+'</br>'+
+						'<strong>Validade: </strong>'+feature.properties.validade+'</br>'+
+						'<strong>Vazão (m³/h): </strong>'+feature.properties.vazao+'</br>'+
+						'<strong>H/Dia: </strong>'+feature.properties.hdia+'</br>'+
+						'<strong>Profundidade do poço (m): </strong>'+feature.properties.profundidade+'</br>'+
+						'<strong>Tipo: </strong>'+feature.properties.tipo+'</br>'+
+						'<strong>NE (m): </strong>'+feature.properties.ne+'</br>'+
+						'<strong>ND (m): </strong>'+feature.properties.nd+'</br>'+
+						'<strong>Província Hidrogeológica: </strong>'+feature.properties.provincia+'</br>'+
+						'<strong>UPG: </strong>'+feature.properties.upg+'</br>'+
+						'<strong>Situação/Localização: </strong>'+feature.properties.situacao+'</br>'+
+						'<strong>Latitude: </strong>'+feature.properties.latitude+'</br>'+
+						'<strong>Longitude: </strong>'+feature.properties.longitude+'</br>'
 								); //para cada feição cria um popup com as informações
 			  }
 			});
