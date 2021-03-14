@@ -25,7 +25,20 @@
 <!-- CRIA CAMADAS DE MAPA BASE -->
 		var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 25});
 		var esrisat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom: 25, maxNativeZoom: 17});
-
+		var shpfile = new L.Shapefile('https://raw.githubusercontent.com/calvinmetcalf/leaflet.shapefile/gh-pages/maSP.zip', {
+					onEachFeature: function(feature, layer) {
+						if (feature.properties) {
+							layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+								return k + ": " + feature.properties[k];
+							}).join("<br />"), {
+								maxHeight: 200
+							});
+						}
+					}
+				});
+				
+			
+	
 <!-- CONFIGURAÇÕES DO AGRUPAMENTO DE PONTOS -->
 			var markers = L.markerClusterGroup({
 				spiderfyOnMaxZoom: false, //desagrupar os pontos no zoom máximo: falso
@@ -61,6 +74,7 @@
 			});
 			markers.addLayer(geoJsonLayer); //adiciona marcadores na camada
 			var map = L.map('map').addLayer(osm); //cria mapa e adiciona mapa base padrão
+			map.addLayer(shpfile);
 			map.addLayer(markers); //adiciona camada de marcadores no mapa
 			map.fitBounds(markers.getBounds()); //centraliza visão do mapa na extensão dos marcadores
 			
