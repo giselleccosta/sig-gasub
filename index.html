@@ -29,9 +29,11 @@
 	
 		var shp_bacias_hidrograficas_mt ='https://raw.githubusercontent.com/giselleccosta/shp-gasub/main/bacias_hidrograficas_mt.zip';
 		var shp_hidrogeologia ='https://raw.githubusercontent.com/giselleccosta/shp-gasub/main/hidrogeologia.zip';
+		var shp_localidades ='https://raw.githubusercontent.com/giselleccosta/shp-gasub/main/localidades.zip';
 		
 		var bacias_hidrograficas_mt = new L.Shapefile(shp_bacias_hidrograficas_mt, { onEachFeature: function(feature, layer) { if (feature.properties) { layer.bindPopup(Object.keys(feature.properties).map(function(k) { return k + ": " + feature.properties[k]; }).join("<br />"), { maxHeight: 600 }); } } });
 		var hidrogeologia = new L.Shapefile(shp_hidrogeologia, { onEachFeature: function(feature, layer) { if (feature.properties) { layer.bindPopup(Object.keys(feature.properties).map(function(k) { return k + ": " + feature.properties[k]; }).join("<br />"), { maxHeight: 600 }); } } });
+		var localidades = new L.Shapefile(shp_localidades, { onEachFeature: function(feature, layer) { if (feature.properties) { layer.bindPopup(Object.keys(feature.properties).map(function(k) { return k + ": " + feature.properties[k]; }).join("<br />"), { maxHeight: 600 }); } } });
 		
 	
 <!-- CONFIGURAÇÕES DO AGRUPAMENTO DE PONTOS -->
@@ -82,7 +84,8 @@
 			var camadas = {	//INSERE AS CAMADAS CRIADAS ACIMA
 			    	"Poços": markers,	//INSIRA OS NOMES DAS CAMADAS E AS VARIAVEIS CRIADAS ACIMA
 				"Bacias Hidrográficas": bacias_hidrograficas_mt,
-				"Hidrogeologia": hidrogeologia
+				"Hidrogeologia": hidrogeologia,
+				"Localidades": localidades
 			};
 			L.control.layers(mapasbase, camadas, {collapsed:false}).addTo(map); 	//ADICIONA O CONTROLE DE CAMADAS NO MAPA
 	
