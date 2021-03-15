@@ -27,10 +27,11 @@
 		var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 25});
 		var esrisat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom: 25, maxNativeZoom: 17});
 	
-		
 		var shp_bacias_hidrograficas_mt ='https://raw.githubusercontent.com/giselleccosta/shp-gasub/main/bacias_hidrograficas_mt.zip';
+		var shp_hidrogeologia ='https://raw.githubusercontent.com/giselleccosta/shp-gasub/main/hidrogeologia.zip';
 		
 		var bacias_hidrograficas_mt = new L.Shapefile(shp_bacias_hidrograficas_mt, { onEachFeature: function(feature, layer) { if (feature.properties) { layer.bindPopup(Object.keys(feature.properties).map(function(k) { return k + ": " + feature.properties[k]; }).join("<br />"), { maxHeight: 600 }); } } });
+		var hidrogeologia = new L.Shapefile(shp_hidrogeologia, { onEachFeature: function(feature, layer) { if (feature.properties) { layer.bindPopup(Object.keys(feature.properties).map(function(k) { return k + ": " + feature.properties[k]; }).join("<br />"), { maxHeight: 600 }); } } });
 		
 	
 <!-- CONFIGURAÇÕES DO AGRUPAMENTO DE PONTOS -->
@@ -80,7 +81,8 @@
 
 			var camadas = {	//INSERE AS CAMADAS CRIADAS ACIMA
 			    	"Poços": markers,	//INSIRA OS NOMES DAS CAMADAS E AS VARIAVEIS CRIADAS ACIMA
-				"Bacias Hidrográficas": bacias_hidrograficas_mt
+				"Bacias Hidrográficas": bacias_hidrograficas_mt,
+				"Hidrogeologia": hidrogeologia
 			};
 			L.control.layers(mapasbase, camadas).addTo(map); 	//ADICIONA O CONTROLE DE CAMADAS NO MAPA
 	
