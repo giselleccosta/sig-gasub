@@ -26,14 +26,19 @@
 <!-- CRIA CAMADAS DE MAPA BASE -->
 		var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 25});
 		var esrisat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom: 25, maxNativeZoom: 17});
-	
+
+<!-- REFERENCIA CAMADAS DE BASE CARTOGRÁFICA (SHAPEFILES) -->	
 		var shp_bacias_hidrograficas_mt ='https://raw.githubusercontent.com/giselleccosta/shp-gasub/main/bacias_hidrograficas_mt.zip';
 		var shp_hidrogeologia ='https://raw.githubusercontent.com/giselleccosta/shp-gasub/main/hidrogeologia.zip';
 		var shp_localidades ='https://raw.githubusercontent.com/giselleccosta/shp-gasub/main/localidades.zip';
-		
+		var shp_sistemaviario ='https://github.com/giselleccosta/shp-gasub/raw/main/sistemaviariosimples.zip';
+			
+
+<!-- CRIA CAMADAS DE BASE CARTOGRÁFICA -->	
 		var bacias_hidrograficas_mt = new L.Shapefile(shp_bacias_hidrograficas_mt, { onEachFeature: function(feature, layer) { if (feature.properties) { layer.bindPopup(Object.keys(feature.properties).map(function(k) { return k + ": " + feature.properties[k]; }).join("<br />"), { maxHeight: 600 }); } } });
 		var hidrogeologia = new L.Shapefile(shp_hidrogeologia, { onEachFeature: function(feature, layer) { if (feature.properties) { layer.bindPopup(Object.keys(feature.properties).map(function(k) { return k + ": " + feature.properties[k]; }).join("<br />"), { maxHeight: 600 }); } } });
 		var localidades = new L.Shapefile(shp_localidades, { onEachFeature: function(feature, layer) { if (feature.properties) { layer.bindPopup(Object.keys(feature.properties).map(function(k) { return k + ": " + feature.properties[k]; }).join("<br />"), { maxHeight: 600 }); } } });
+		var sistemaviario = new L.Shapefile(shp_sistemaviario, { onEachFeature: function(feature, layer) { if (feature.properties) { layer.bindPopup(Object.keys(feature.properties).map(function(k) { return k + ": " + feature.properties[k]; }).join("<br />"), { maxHeight: 600 }); } } });
 		
 	
 <!-- CONFIGURAÇÕES DO AGRUPAMENTO DE PONTOS -->
@@ -80,12 +85,14 @@
 					   "Ruas (OpenStreetMap)": osm,	//INSIRA OS NOMES DOS MAPAS E AS VARIAVEIS CRIADAS ACIMA
 					   "Satélite (ESRI)": esrisat
 					};
-
+			
+<!-- ADICIONE AQUI AS CAMADAS PARA O CONTROLE -->
 			var camadas = {	//INSERE AS CAMADAS CRIADAS ACIMA
 			    	"Poços": markers,	//INSIRA OS NOMES DAS CAMADAS E AS VARIAVEIS CRIADAS ACIMA
 				"Bacias Hidrográficas": bacias_hidrograficas_mt,
 				"Hidrogeologia": hidrogeologia,
-				"Localidades": localidades
+				"Localidades": localidades,
+				"Sistema Viário": sistemaviario
 			};
 			L.control.layers(mapasbase, camadas, {collapsed:false}).addTo(map); 	//ADICIONA O CONTROLE DE CAMADAS NO MAPA
 	
